@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #clicker {
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        #score {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="clicker">Click me!</div>
+<div id="score">Score: 0</div>
+
+<script>
+    // Load the score from local storage if available
+    let score = parseInt(localStorage.getItem('clickerScore')) || 0;
+
+    // Update the score on the page
+    function updateScore() {
+        document.getElementById('score').innerText = `Score: ${score}`;
+    }
+
+    // Increment the score when the clicker is clicked
+    document.getElementById('clicker').addEventListener('click', function () {
+        score++;
+        updateScore();
+        // Save the score to local storage
+        localStorage.setItem('clickerScore', score);
+    });
+
+    // Initialize the score on page load
+    updateScore();
+</script>
+
+</body>
+</html>
